@@ -1,0 +1,44 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<beans xmlns="http://www.springframework.org/schema/beans"
+  xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+  xmlns:mvc="http://www.springframework.org/schema/mvc"
+  xmlns:p="http://www.springframework.org/schema/p"
+  xmlns:context="http://www.springframework.org/schema/context"
+  xmlns:util="http://www.springframework.org/schema/util"
+  xsi:schemaLocation="
+    http://www.springframework.org/schema/beans http://www.springframework.org/schema/beans/spring-beans.xsd
+    http://www.springframework.org/schema/mvc http://www.springframework.org/schema/mvc/spring-mvc.xsd
+    http://www.springframework.org/schema/context http://www.springframework.org/schema/context/spring-context.xsd
+    http://www.springframework.org/schema/util http://www.springframework.org/schema/util/spring-util.xsd">
+    
+<mvc:annotation-driven  />
+
+<util:properties id="applicationProps" location="classpath:application.properties"/>
+
+   <context:component-scan base-package="pl.java.scalatech.controller" use-default-filters="false">
+		<context:include-filter type="annotation" expression="org.springframework.stereotype.Controller" />
+	</context:component-scan> 
+
+	<mvc:view-controller path="/" view-name="/welcome/welcome"/>
+	<mvc:view-controller path="/loginForm" view-name="loginForm"/>
+	<mvc:resources location="/images/" mapping="/images/**" cache-period="300" />
+	<mvc:resources location="/js/" mapping="/js/**" cache-period="300" />
+	<mvc:resources location="/css/" mapping="/css/**" cache-period="300" />
+    <mvc:resources location="/themes/" mapping="/themes/**"/>
+	<mvc:resources mapping="/resources/**" location="/resources/" />
+	
+
+	<mvc:interceptors>
+	
+		<bean class="org.springframework.web.servlet.i18n.LocaleChangeInterceptor" p:paramName="locale" />
+	 	<bean class="org.springframework.orm.jpa.support.OpenEntityManagerInViewInterceptor" p:entityManagerFactory-ref="entityManagerFactory" />
+		<bean class="org.springframework.web.servlet.theme.ThemeChangeInterceptor" p:paramName="theme"/>
+ 
+	</mvc:interceptors>
+
+   
+	<bean id="localeResolver" class="org.springframework.web.servlet.i18n.CookieLocaleResolver" />	
+
+	
+	
+</beans>
