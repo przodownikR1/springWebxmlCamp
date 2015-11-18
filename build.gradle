@@ -84,15 +84,13 @@ dependencies {
     testCompile 'junit:junit:4.12'
     testCompile("org.mockito:mockito-all:$mockitoVersion")
     testCompile 'org.assertj:assertj-core:3.2.0'
-    testCompile 'com.jayway.awaitility:awaitility-java8:1.6.1'
-    testCompile 'com.jayway.awaitility:awaitility:1.6.5'
     testCompile 'org.springframework:spring-test'
 }
 
 configurations {
     all {
         resolutionStrategy.cacheChangingModulesFor 0, 'seconds'
-        exclude group: "commons-logging"
+       // exclude group: "commons-logging"
         exclude module: "slf4j-log4j12"
         exclude module: "hibernate-jpa-2.0-api"
     }
