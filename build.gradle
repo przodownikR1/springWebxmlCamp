@@ -48,10 +48,15 @@ sourceCompatibility = 1.8
 targetCompatibility = 1.8
 
 jar {
-    baseName = 'spring-basic-web-javaConfig-camp'
+    baseName = 'sampleApp'
     version = '0.1.0-SNAPSHOT'
 }
 
+gretty{
+    
+    httpPort = 8991
+    contextPath = "/mySpringApp"
+}
 
 dependencies {
     compile 'org.springframework:spring-core'
