@@ -77,6 +77,6 @@ public class BytesController {
         ResponseEntity<byte[]> result = restTemplate.exchange("http://localhost:8080/cars/carPicture/{id}", HttpMethod.GET, entity, byte[].class, map);
 
         // Display the image
-        Writer.write(response, result.getBody());
+        //Writer.write(response, result.getBody());
     }
 }
