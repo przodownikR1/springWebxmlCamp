@@ -18,4 +18,19 @@
   </build>
 
 
+buildscript {
+  repositories {
+    mavenLocal()
+    mavenCentral()
+  }
+  dependencies {
+    classpath "org.akhikhl.gretty:gretty:1.1.8"
+  }
+}
+
+apply plugin: 'war'
+apply plugin: 'org.akhikhl.gretty'
+
+apply from: 'gretty.gradle'
+
 
